@@ -35,7 +35,7 @@ export function ModalComponent({ edit, id, onclose }) {
      
     useEffect(() => {
         if (edit) {
-            axios.get(`http://localhost:5000/products/${id}`)
+            axios.get(`https://taskpro-p.herokuapp.com/products/${id}`)
             .then((prod) => {
                 console.log(prod.data)
                 setData({

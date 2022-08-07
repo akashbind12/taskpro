@@ -41,22 +41,14 @@ export const AddToCart = (payload) => (dispatch)=> {
     dispatch(CartRequest())
   
     console.log("payload",payload)
-    axios.post('http://localhost:5000/products', payload)
+    axios.post('https://taskpro-p.herokuapp.com/products', payload)
       .then(function (response) {
           console.log("bag", response.data);
-          toast.success('Product added to cart sucessfully', Tost);
+          toast.success('Product added sucessfully', Tost);
           dispatch(GetCart())
       })
       .catch(function (error) {
-        toast.error('Product already exist in cart', {
-            position: "top-center",
-            autoClose: 5000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-            });
+        toast.error('Product already exist in cart', Tost );
           dispatch(CartFailure(error.message))
       });
 }
@@ -65,7 +57,7 @@ export const GetCart = (payload) => (dispatch)=> {
     dispatch(CartRequest())
   
     
-    axios.get('http://localhost:5000/products')
+    axios.get('https://taskpro-p.herokuapp.com/products')
       .then(function (response) {
           console.log(response.data);
           dispatch(CartSuccess(response.data))
@@ -80,10 +72,10 @@ export const DelteCart = (id) => (dispatch)=> {
     dispatch(CartRequest())
   
     
-    axios.delete(`http://localhost:5000/products/${id}`)
+    axios.delete(`https://taskpro-p.herokuapp.com/products/${id}`)
     .then(function (response) {
         console.log(response.data);
-        toast.success('Product removed from cart sucessfully', Tost);
+        toast.success('Product removed sucessfully', Tost);
         dispatch(GetCart())
     })
     .catch(function (error) {
@@ -96,7 +88,7 @@ export const EditCart = (id,payload) => (dispatch) => {
     console.log(id,payload)
     dispatch(CartRequest())
 
-    axios.put(`http://localhost:5000/products/${id}`, payload)
+    axios.put(`https://taskpro-p.herokuapp.com/products/${id}`, payload)
     .then(function (response) {
         console.log(response.data);
         toast.success('Product updated sucessfully', Tost);
