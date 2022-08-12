@@ -63,7 +63,7 @@ export function Product({ props, onClick, onclick, setEdit,setId}) {
             </Heading>
             <Stack direction={'row'} align={'center'}>
               <Text fontWeight={800} fontSize={'xl'}>
-                ${props.price}
+                {props.price}
               </Text>
            
             </Stack>
